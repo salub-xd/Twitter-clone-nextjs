@@ -40,7 +40,7 @@ interface CardProps {
         userId: string;
         createdAt: string;
         likedIds?: string[];
-        user: User
+        user: User;
     }
 }
 
@@ -63,7 +63,9 @@ export const TwitterCard: React.FC<CardProps> = ({
     return (
         <>
             {/* {data?.map((item) => ( */}
-            <Link key={data.user.id} href={`/${data.user.username}/status/${data.id}`} className='flex w-full px-2 py-2 gap-x-2 border-b border-0 sm:px-4'
+            <Link key={data.user.id} 
+            href={`/${data.user.username}/status/${data.id}`}
+             className='flex w-full px-2 py-2 gap-x-2 border-b border-0 sm:px-4'
                 // onClick={() => router.push(`/${data.user.username}/status/${data.id}`)}
             >
                 <Link href={data.user.username} className='flex items-start rounded-lg w-10 sm:w-auto'>

@@ -53,10 +53,11 @@ export const {
                 session.user.name = token.name;
                 session.user.username = token.username as string;
                 session.user.email = token.email;
+                session.user.bio = token.bio;
                 session.user.isOAuth = token.isOAuth as boolean;
             }
 
-            if(session.user.username) return session;
+            if (session.user.username) return session;
 
             const existingUser = await getUserById(session.user.id);
 
@@ -83,6 +84,7 @@ export const {
             token.name = existingUser.name;
             token.username = existingUser.username;
             token.email = existingUser.email;
+            token.bio = existingUser.bio;
 
             return token;
         }

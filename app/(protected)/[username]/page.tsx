@@ -42,6 +42,17 @@ const UsernamePage: React.FC<UsernameProps> = async ({ params }) => {
         }
     });
 
+    const formettedUser = {
+        id: user?.id,
+        name: user?.name,
+        username: user?.username,
+        bio: user?.bio,
+        image: user?.image,
+        coverImage: user?.coverImage,
+        createdAt: dateFormat(user?.createdAt, 'mmm d, yy'),
+        followingIds: user?.followingIds
+
+    }
 
     const formettedProducts: TwitterCardProps[] = posts.map((item) => ({
         id: item.id,
@@ -62,7 +73,7 @@ const UsernamePage: React.FC<UsernameProps> = async ({ params }) => {
 
     return (
         <div className="w-auto sm:w-[600px] border">
-            <UserClient data={user} />
+            <UserClient data={formettedUser} />
             {/* <div><h1>Posts</h1></div> */}
             {formettedProducts?.map((item) => (
                 <TwitterCard key={item.id} data={item} />

@@ -12,20 +12,18 @@ import { PostClientPage } from './components/post-page';
 interface PostPageProps {
     params: {
         postId: string;
-        username:string;
+        username: string;
     };
 }
 
 interface PostsCardProps {
-    data: {
-        id: string;
-        title: string;
-        image?: string;
-        userId: string;
-        createdAt: string;
-        likedIds?: string[];
-        user: User;
-    }
+    id: string;
+    title: string;
+    image?: string;
+    userId: string;
+    createdAt: string;
+    likedIds?: string[];
+    user: User;
 }
 
 const PostPage: React.FC<PostPageProps> = async ({ params }) => {
@@ -34,8 +32,8 @@ const PostPage: React.FC<PostPageProps> = async ({ params }) => {
     // // const userId = await getUserByUsername(username);
     // console.log({username});
     // console.log({postId:params?.postId});
-    
-    const posts = await db.post.findFirst({
+
+    const post = await db.post.findFirst({
         where: {
             id: params?.postId
         },
@@ -43,22 +41,24 @@ const PostPage: React.FC<PostPageProps> = async ({ params }) => {
             user: true
         }
     });
-    console.log({posts});
+    console.log({ post });
 
 
-    // const formettedProducts: PostsCardProps = posts.map((item) => ({
-    //     postId: item.id,
-    //     title: item.title,
-    //     postImage: item.image,
-    //     likedIds: item.likedIds,
-    //     createdAt: dateFormat(item.createdAt, 'mmm d, yy'),
-    //     user: item.user
-    // }))
+    // posts. .map((item) => ({
+    const formettedProducts = {
+        id: post?.id,
+        title: post?.title,
+        image: post?.image,
+        likedIds: post?.likedIds,
+        userId: post?.userId,
+        createdAt: dateFormat(post?.createdAt, 'mmm d, yy'),
+        user: post?.user
+    }
+    // ))
 
     return (
         <div className='w-[350px] sm:w-[400px] lg:w-[600px] border-b '>
-            hello psots
-            <PostClientPage data={posts} />
+            <PostClientPage data={formettedProducts} />
         </div>
     )
 }

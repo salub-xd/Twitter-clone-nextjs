@@ -79,6 +79,7 @@ export const settings = async (
       name: updatedUser.name,
       username: updatedUser.username as string,
       email: updatedUser.email,
+      bio: updatedUser.bio,
     }
   });
 

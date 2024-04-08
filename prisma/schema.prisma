@@ -26,6 +26,7 @@ model User {
   createdAt       DateTime  @default(now())
   updatedAt       DateTime  @updatedAt
   followingIds    String[]
+  followersIds    String[]
   hasNotification Boolean?
 
   accounts      Account[]

@@ -10,6 +10,7 @@ export interface User {
     createdAt: Date ;
     password?: string ;
     followingIds?: string[] ;
+    followersIds?: string[] ;
 }
 
 export interface Post {

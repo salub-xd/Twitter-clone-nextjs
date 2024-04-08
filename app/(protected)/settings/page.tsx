@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTransition, useState } from "react";
 import { useSession } from "next-auth/react";
+import { Textarea } from "@/components/ui/textarea";
 
 // import { Switch } from "@/components/ui/switch";
 // import {
@@ -53,7 +54,7 @@ const SettingsPage = () => {
             name: user?.name || undefined,
             username: user?.username || undefined,
             email: user?.email || undefined,
-            isTwoFactorEnabled: user?.isTwoFactorEnabled || undefined,
+            bio: user?.bio || undefined,
         }
     });
 
@@ -180,6 +181,23 @@ const SettingsPage = () => {
                                     />
                                 </>
                             )}
+                            <FormField
+                                control={form.control}
+                                name="bio"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel>Bio</FormLabel>
+                                        <FormControl>
+                                            <Textarea
+                                                placeholder="Influencer || Dog Lover"
+                                                {...field}
+                                                disabled={isPending}
+                                            />
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
                             {/* {user?.isOAuth === false && (
                 <FormField
                   control={form.control}
@@ -215,7 +233,7 @@ const SettingsPage = () => {
                     </form>
                 </Form>
             </CardContent>
-        </Card>
+        </Card >
     );
 }
 

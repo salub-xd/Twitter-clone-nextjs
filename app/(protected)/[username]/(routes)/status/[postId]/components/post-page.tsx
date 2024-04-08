@@ -39,7 +39,7 @@ interface PostPageProps {
         title: string;
         image?: string;
         userId: string;
-        createdAt: string;
+        createdAt: Date;
         likedIds?: string[];
         user: User;
     }
@@ -60,10 +60,12 @@ export const PostClientPage: React.FC<PostPageProps> = ({ data }) => {
                         <h1 className='font-semibold text-sm sm:text-lg'>Posts</h1>
                     </div>
                 </div>
-                {/* <Link key={data.id} href={`/${data.user.username}/status/${data.id}`} className='flex w-full px-2 py-2 gap-x-2 border-b border-0 sm:px-4'
+                <div className='flex w-full px-2 py-2 gap-x-2 border-b border-0 sm:px-4'
                 // onClick={() => router.push(`/${data.user.username}/status/${data.id}`)}
                 >
-                    <Link href={data.user.username} className='flex items-start rounded-lg w-10 sm:w-auto'>
+                    <Link href={data.user.username} className='flex items-start rounded-lg w-10 sm:w-auto'
+                    // onClick={() => router.push(`/${data.user.username}`)}
+                    >
                         <HoverCard>
                             <HoverCardTrigger className='flex' >
                                 <Image
@@ -237,7 +239,7 @@ export const PostClientPage: React.FC<PostPageProps> = ({ data }) => {
                             </div>
                         </div>
                     </div>
-                </Link> */}
+                </div>
             </div>
         </div>
     )

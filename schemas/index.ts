@@ -4,8 +4,8 @@ import * as z from 'zod';
 export const SettingsSchema = z.object({
     name: z.optional(z.string()),
     username: z.optional(z.string()),
-    isTwoFactorEnabled: z.optional(z.boolean()),
     email: z.optional(z.string().email()),
+    bio: z.optional(z.string()),
     password: z.optional(z.string().min(6)),
     newPassword: z.optional(z.string().min(6)),
 })
@@ -72,4 +72,8 @@ export const RegisterSchema = z.object({
 export const PostSchema = z.object({
     title: z.string(),
     image: z.string().optional(),
+})
+
+export const FollowSchema = z.object({
+    id: z.string(),
 })
